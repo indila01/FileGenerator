@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  generator:
+    build: 
+      context: ./source/FileGenerator
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data
+
+  reader:
+    build: 
+      context: ./source/FileReader
+      dockerfile: Dockerfile
+    volumes:
+      - ./source/FileGenerator/data:/app/data
+      - ./output:/app/output
