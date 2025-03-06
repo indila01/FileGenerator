@@ -51,6 +51,10 @@ public class Program
         return filePath;
     }
 
+    /// <summary>
+    /// Generates a file with random data until it reaches the target file size
+    /// </summary>
+    /// <param name="filePath">Path where the file should be generated</param>
     private static void GenerateFile(string filePath)
     {
         using StreamWriter writer = new(filePath, false);
@@ -73,6 +77,11 @@ public class Program
         }
     }
 
+    /// <summary>
+    /// Generates a random item of various types (alphabetical, numeric, or alphanumeric)
+    /// </summary>
+    /// <returns>A randomly generated string item</returns>
+    /// <exception cref="InvalidOperationException">Thrown when random generation fails</exception>
     private static string GenerateRandomItem()
     {
         return random.Next(4) switch
@@ -85,6 +94,10 @@ public class Program
         };
     }
 
+    /// <summary>
+    /// Generates a random alphabetical string of length between 5 and 15 characters
+    /// </summary>
+    /// <returns>A string containing only lowercase letters</returns>
     private static string GenerateAlphabeticalString()
     {
         int length = random.Next(5, 15);
@@ -93,16 +106,28 @@ public class Program
         );
     }
 
+    /// <summary>
+    /// Generates a random real number between -1000 and 1000 with 6 decimal places
+    /// </summary>
+    /// <returns>A string representation of the generated real number</returns>
     private static string GenerateRealNumber()
     {
         return $"{random.NextDouble() * random.Next(-1000, 1000):F6}";
     }
 
+    /// <summary>
+    /// Generates a random integer between -1,000,000 and 1,000,000
+    /// </summary>
+    /// <returns>A string representation of the generated integer</returns>
     private static string GenerateInteger()
     {
         return random.Next(-1000000, 1000000).ToString();
     }
 
+    /// <summary>
+    /// Generates a random alphanumeric string with optional leading and trailing spaces
+    /// </summary>
+    /// <returns>A string containing letters, numbers, and optional spaces</returns>
     private static string GenerateAlphanumeric()
     {
         int length = random.Next(5, 15);

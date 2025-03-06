@@ -24,6 +24,10 @@ public class Program
         }
     }
 
+    /// <summary>
+    /// Gets the path to the most recent data file in the data directory
+    /// </summary>
+    /// <returns>Full path to the latest data file</returns>
     private static string GetInputFile()
     {
         string baseDirectory = Directory.GetCurrentDirectory();
@@ -44,6 +48,10 @@ public class Program
             ?? throw new FileNotFoundException("No data files found in the data directory.");
     }
 
+    /// <summary>
+    /// Processes the input file and generates an analysis report
+    /// </summary>
+    /// <param name="filePath">Path to the input file to process</param>
     private static void ProcessFile(string filePath)
     {
         if (!File.Exists(filePath))
@@ -79,6 +87,12 @@ public class Program
         Console.ResetColor();
     }
 
+    /// <summary>
+    /// Writes the analysis header information to both the output file and console
+    /// </summary>
+    /// <param name="writer">StreamWriter instance for writing to the output file</param>
+    /// <param name="filePath">Path to the input file being processed</param>
+    /// <param name="itemCount">Total number of items found in the input file</param>
     private static void WriteHeader(StreamWriter writer, string filePath, int itemCount)
     {
         var headerBuilder = new StringBuilder();
@@ -92,6 +106,11 @@ public class Program
         Console.Write(header);
     }
 
+    /// <summary>
+    /// Processes a single item and writes its analysis to both the output file and console
+    /// </summary>
+    /// <param name="writer">StreamWriter instance for writing to the output file</param>
+    /// <param name="item">The item to process</param>
     private static void ProcessItem(StreamWriter writer, string item)
     {
         var type = DetermineType(item);
@@ -101,6 +120,11 @@ public class Program
         Console.Write(output);
     }
 
+    /// <summary>
+    /// Determines the type of the given item
+    /// </summary>
+    /// <param name="item">The item to analyze</param>
+    /// <returns>A string describing the type of the item (Empty, Integer, Real Number, Alphabetical String, Alphanumeric, or Unknown)</returns>
     private static string DetermineType(string item)
     {
         if (string.IsNullOrWhiteSpace(item))
